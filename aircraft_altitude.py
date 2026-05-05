@@ -1,22 +1,21 @@
 from aircraft import Aircraft
 
-
 model = input("Enter aircraft model:\n")
 aircraft = Aircraft(model)
 
 while True:
     command = input("Enter command (A for ascent, D for descent, X to exit):\n")
 
-    if command == "X":
+    parts = command.split()
+
+    if parts[0] == "X":
         break
 
-    parts = command.split()
-    action = parts[0]
     feet = int(parts[1])
 
-    if action == "A":
-        aircraft.ascend(feet)
-    elif action == "D":
-        aircraft.descend(feet)
+    if parts[0] == "A":
+        aircraft.ascent(feet)
+    elif parts[0] == "D":
+        aircraft.descent(feet)
 
-print(f"Final altitude: {aircraft.altitude} feet")
+print(aircraft)
